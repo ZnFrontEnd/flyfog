@@ -1,0 +1,50 @@
+import React, { Component } from 'react'
+import { connect } from 'dva'
+
+import PageHeaderWrapper from '@/components/PageHeaderWrapper'
+import SearchForm from '@/components/SearchForm'
+import BasicTable from '@/components/BasicTable'
+
+@connect(() => ({}))
+class @componentName@ extends Component {
+    state = {}
+
+    componentDidMount () {
+        this.fetchData()
+    }
+
+    // 请求表格的数据
+    fetchData = () => {
+
+    }
+
+    // 查询表单搜索
+    handleFormSearch = values => {
+        console.log(values)
+        this.fetchData(values)
+    }
+
+    // 查询表单下载
+    handleFromDownload = values => {
+        console.log(values)
+    }
+
+    render () {
+        const { dataSrouce=[] } = this.props
+
+        return (
+            <PageHeaderWrapper>
+                <SearchForm
+                    data={@formdata@}
+                    @formbuttongroup@
+                />
+                <BasicTable
+                    columns={@tablecolumns@}
+                    dataSource={dataSrouce}
+                />
+            </PageHeaderWrapper>
+        )
+    }
+}
+
+export default @componentName@
