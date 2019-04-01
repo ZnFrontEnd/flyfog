@@ -43,7 +43,20 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                use: 'babel-loader?cacheDirectory',
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        cacheDirectory: true,
+                        presets: [ '@babel/preset-env', '@babel/preset-react' ],
+                        plugins: [
+                            'react-hot-loader/babel',
+                            '@babel/plugin-transform-runtime',
+                            ['import', { 'libraryName': 'antd', 'libraryDirectory': 'es', 'style': true }],
+                            ['@babel/plugin-proposal-decorators', { 'legacy': true }],
+                            ['@babel/plugin-proposal-class-properties', { 'loose': true }],
+                        ]
+                    }
+                },
             },
             {
                 test: /\.less$/,

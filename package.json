@@ -1,8 +1,8 @@
 {
   "name": "flyfog",
-  "version": "1.0.6",
+  "version": "1.1.2",
   "description": "Visual generated pages",
-  "main": "app/index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ZnFrontEnd/flyfog.git"
@@ -22,7 +22,7 @@
     "npm-check": "cross-env NPM_CHECK_INSTALLER=cnpm npm-check -u"
   },
   "bin": {
-    "flyfog": "./app/index.js"
+    "flyfog": "./bin/flyfog.js"
   },
   "files": [
     "lib",
