@@ -32,7 +32,7 @@ const checkStatus = response => {
 
 const isDevelopment = process.env.NODE_ENV === 'development'
 const devBaseUrl = '//localhost:3000/api'
-const prodBaseUrl = '//localhost:3000/api'
+const prodBaseUrl = '/api'
 
 export const baseUrl = isDevelopment ? devBaseUrl : prodBaseUrl
 

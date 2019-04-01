@@ -10,17 +10,18 @@ import middleware from './middlewares'
 import apiRouter from './router-config'
 
 const app = new Koa()
-const baseUrl = path.resolve('./')
+const distUrl = path.resolve(__dirname, '../dist')
 
 app.use(cors())
     .use(logger())
-    .use(koaStatic(path.join(baseUrl, 'dist')))
     .use(middleware.util)
     .use(koaBody())
     .use(async (ctx, next) => {
-        if (!ctx.url) {
+        if (ctx.url === '/') {
             ctx.set('Content-Type', 'text/html;charset="utf-8"')
-            ctx.body = fse.createReadStream(path.join(baseUrl, 'dist/index.html'))
+            ctx.body = fse.createReadStream(path.join(distUrl, 'index.html'))
+        } else if (ctx.url.indexOf('api') === -1) {
+            await koaStatic(distUrl)(ctx, next)
         } else {
             next()
         }
@@ -28,5 +29,5 @@ app.use(cors())
     .use(apiRouter.routes())
     .use(apiRouter.allowedMethods())
 
-app.listen(3000)
-console.log('server port 3000')
+app.listen(3009)
+console.log('server port 3009')
