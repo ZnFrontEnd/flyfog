@@ -1,6 +1,6 @@
 {
   "name": "flyfog",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Visual generated pages",
   "main": "app/index.js",
   "repository": {
@@ -17,17 +17,18 @@
     "start": "webpack-dev-server --config ./build/webpack.dev.js",
     "server": "nodemon --watch app app/index.js",
     "build": "webpack --config ./build/webpack.prod.js",
+    "compile": "babel app --out-dir lib",
+    "prepublish": "npm run build && npm run compile",
     "npm-check": "cross-env NPM_CHECK_INSTALLER=cnpm npm-check -u"
   },
   "bin": {
     "flyfog": "./app/index.js"
   },
   "files": [
-    "app",
+    "lib",
     "bin",
     "dist",
     "public",
-    ".babelrc",
     "LICENSE",
     "README.md"
   ],
@@ -46,6 +47,7 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.4.0",
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/plugin-proposal-decorators": "^7.4.0",
@@ -55,7 +57,6 @@
     "@babel/register": "^7.4.0",
     "@babel/runtime": "^7.4.2",
     "autoprefixer": "^9.5.0",
-    "babel-cli": "^6.26.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-import": "^1.11.0",
