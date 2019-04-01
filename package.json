@@ -1,6 +1,6 @@
 {
   "name": "flyfog",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Visual generated pages",
   "main": "app/index.js",
   "repository": {
@@ -20,7 +20,7 @@
     "npm-check": "cross-env NPM_CHECK_INSTALLER=cnpm npm-check -u"
   },
   "bin": {
-    "flyfog": "./bin/run.js"
+    "flyfog": "./bin/flyfog.js"
   },
   "files": [
     "app",
