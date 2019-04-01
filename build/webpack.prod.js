@@ -5,7 +5,7 @@ const common = require('./webpack.common.js')
 module.exports = merge(common, {
     mode: 'production',
     plugins: [
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(),
     ],
     // optimization: {
     //     splitChunks: {
