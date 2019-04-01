@@ -1,6 +1,6 @@
 {
   "name": "flyfog",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Visual generated pages",
   "main": "app/index.js",
   "repository": {
