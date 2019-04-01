@@ -20,7 +20,7 @@
     "npm-check": "cross-env NPM_CHECK_INSTALLER=cnpm npm-check -u"
   },
   "bin": {
-    "flyfog": "./bin/flyfog.js"
+    "flyfog": "./app/index.js"
   },
   "files": [
     "app",
