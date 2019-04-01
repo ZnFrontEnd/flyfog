@@ -1,8 +1,8 @@
 {
   "name": "flyfog",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Visual generated pages",
-  "main": "index.js",
+  "main": "app/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ZnFrontEnd/flyfog.git"
@@ -19,11 +19,17 @@
     "build": "webpack --config ./build/webpack.prod.js",
     "npm-check": "cross-env NPM_CHECK_INSTALLER=cnpm npm-check -u"
   },
-  "peerDependencies": {
-    "react": ">=16.0.0",
-    "react-dom": ">=16.0.0",
-    "antd": ">=3.10.0"
+  "bin": {
+    "flyfog": "./bin/run.js"
   },
+  "files": [
+    "app",
+    "bin",
+    "dist",
+    "public",
+    "LICENSE",
+    "README.md"
+  ],
   "dependencies": {
     "antd": "^3.15.2",
     "axios": "^0.18.0",
