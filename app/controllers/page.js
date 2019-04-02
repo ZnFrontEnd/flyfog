@@ -68,7 +68,7 @@ export default class PageController {
         } = ctx.request.body
         // console.log(pathName, fileName, componentName, /* functions, */formButtonGrouop, formData, tableColumns)
         // TODO: 根据functions选则不同的路径
-        const teplatePath = path.join(baseUrl, 'app/templates/form&table')
+        const teplatePath = path.resolve(__dirname, '../templates/form&table')
         let templateFile
         try {
             templateFile = fse.readFileSync(teplatePath, 'utf8')
