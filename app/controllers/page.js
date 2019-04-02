@@ -40,9 +40,11 @@ export default class PageController {
         // 最好从pages拿，然后跟这里的路由数据做一个匹配
         const routerConfigPath = path.join(baseUrl, 'config/router.config.js')
         try {
-            const routerConfig = require(routerConfigPath).default
+            let routerCnfigText = fse.readFileSync(routerConfigPath, 'utf8')
+            routerCnfigText = routerCnfigText.replace('export default', '')
+            routerCnfigText = eval(routerCnfigText)
             let routes = []
-            routerConfig.forEach(r => {
+            routerCnfigText.forEach(r => {
                 if (r.path === '/') {
                     routes = r.routes
                 }
