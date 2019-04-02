@@ -1,6 +1,6 @@
 {
   "name": "flyfog",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "Visual generated pages",
   "main": "lib/index.js",
   "repository": {
@@ -29,6 +29,7 @@
     "bin",
     "dist",
     "public",
+    "templates",
     "LICENSE",
     "README.md"
   ],
