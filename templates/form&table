@@ -4,24 +4,63 @@ import { connect } from 'dva'
 import PageHeaderWrapper from '@/components/PageHeaderWrapper'
 import SearchForm from '@/components/SearchForm'
 import BasicTable from '@/components/BasicTable'
+const fetchFunction = () => {} // TODO: import from service
 
 @connect(() => ({}))
 class @componentName@ extends Component {
-    state = {}
+    state = {
+        searchCondition: {}, // 搜索条件
+        dataSrouce: [], // 表格数据
+        pagination: {
+            current: 1,
+            pageSize: 10,
+            total: 0,
+        }, // 表格分页
+    }
 
     componentDidMount () {
         this.fetchData()
     }
 
     // 请求表格的数据
-    fetchData = () => {
+    fetchData = ({ pageNum, ...params }) => {
+        const { pagination, searchCondition } = this.state
 
+        fetchFunction({
+            pageSize: pagination.pageSize,
+            pageNum: pageNum || 1,
+            ...searchCondition,
+            ...params,
+        }).then(res => {
+            if (res && res.success) {
+                this.setState({
+                    dataSrouce: res.data.list,
+                    pagination: {
+                        ...pagination,
+                        total: res.data.count,
+                    },
+                })
+            }
+        })
     }
 
     // 查询表单搜索
     handleFormSearch = values => {
+        const { pagination } = this.state
+
         console.log(values)
-        this.fetchData(values)
+        this.setState(
+            {
+                searchCondition: values,
+                pagination: {
+                    ...pagination,
+                    current: 1,
+                },
+            },
+            () => {
+                this.fetchData()
+            }
+        )
     }
 
     // 查询表单下载
@@ -29,8 +68,27 @@ class @componentName@ extends Component {
         console.log(values)
     }
 
+    // 切换分页
+    handleChangePage = page => {
+        const { pagination } = this.state
+
+        this.setState(
+            {
+                pagination: {
+                    ...pagination,
+                    current: page,
+                },
+            },
+            () => {
+                this.fetchData({
+                    pageNum: page,
+                })
+            }
+        )
+    }
+
     render () {
-        const { dataSrouce=[] } = this.props
+        const { dataSrouce, pagination } = this.state
 
         return (
             <PageHeaderWrapper>
@@ -41,6 +99,10 @@ class @componentName@ extends Component {
                 <BasicTable
                     columns={@tablecolumns@}
                     dataSource={dataSrouce}
+                    pagination={{
+                        ...pagination,
+                        onChange: this.handleChangePage,
+                    }}
                 />
             </PageHeaderWrapper>
         )
