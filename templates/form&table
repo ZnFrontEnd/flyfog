@@ -4,7 +4,9 @@ import { connect } from 'dva'
 import PageHeaderWrapper from '@/components/PageHeaderWrapper'
 import SearchForm from '@/components/SearchForm'
 import BasicTable from '@/components/BasicTable'
-const fetchFunction = () => {} // TODO: import from service
+
+// import { fetchFunction } from '@/services'
+const fetchFunction = () => ({ data: { list: [], count: 0 }, success: true })
 
 @connect(() => ({}))
 class @componentName@ extends Component {
@@ -49,7 +51,6 @@ class @componentName@ extends Component {
     handleFormSearch = values => {
         const { pagination } = this.state
 
-        console.log(values)
         this.setState(
             {
                 searchCondition: values,
@@ -66,7 +67,6 @@ class @componentName@ extends Component {
 
     // 查询表单下载
     handleFromDownload = values => {
-        console.log(values)
     }
 
     // 切换分页
