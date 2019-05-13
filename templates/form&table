@@ -6,7 +6,7 @@ import SearchForm from '@/components/SearchForm'
 import BasicTable from '@/components/BasicTable'
 
 // import { fetchFunction } from '@/services'
-const fetchFunction = () => ({ data: { list: [], count: 0 }, success: true })
+const fetchFunction = async () => ({ data: { list: [], count: 0 }, success: true })
 
 @connect(() => ({}))
 class @componentName@ extends Component {
