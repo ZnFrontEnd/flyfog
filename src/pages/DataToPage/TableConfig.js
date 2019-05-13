@@ -160,6 +160,7 @@ class TableConfig extends Component {
                                     >
                                         <Select.Option value="date">日期 - date</Select.Option>
                                         <Select.Option value="amount">金额 - amount</Select.Option>
+                                        <Select.Option value="longText">长字段 - longText</Select.Option>
                                         {record.cusKey ===
                                             dataSource[dataSource.length - 1].cusKey && (
                                             <Select.Option value="oprate">
