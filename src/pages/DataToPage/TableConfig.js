@@ -38,7 +38,7 @@ class TableConfig extends Component {
     // 添加行
     handleAddRow = () => {
         const { dataSource, keyNum } = this.state
-        if (dataSource[dataSource.length - 1].type === 'oprate') {
+        if (dataSource[dataSource.length - 1] && dataSource[dataSource.length - 1].type === 'oprate') {
             dataSource.splice(-1, 0, { dataIndex: `key-${keyNum}`, cusKey: `key-${keyNum}` })
         } else {
             dataSource.push({ dataIndex: `key-${keyNum}`, cusKey: `key-${keyNum}` })
@@ -54,6 +54,7 @@ class TableConfig extends Component {
     handleRemoveRow = record => {
         const { dataSource } = this.state
         const res = dataSource.filter(d => d.cusKey !== record.cusKey)
+        console.log(res)
         this.setState({
             dataSource: res,
         })
